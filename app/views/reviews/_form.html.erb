@@ -1,10 +1,10 @@
-<%= form_with(model: review, local: true) do |form| %>
-  <% if review.errors.any? %>
+<%= form_with(model: @review, local: true) do |form| %>
+  <% if @review.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
 
       <ul>
-      <% review.errors.full_messages.each do |message| %>
+      <% @review.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :comment %>
-    <%= form.text_area :comment#, id: :review_comment %>
+    <%= form.text_area :comment, id: :review_comment %>
   </div>
 
   <% if @product.nil? %>
@@ -24,10 +24,10 @@
 
   <% else %>
   <%= form.hidden_field :product_id, value: @product.id %>
-  <!-- <div class="field"> -->
-    <!-- <%= form.label :product_id %>
+  <div class="field">
+    <%= form.label :product_id %>
     <%= form.text_field :product_id, disabled: true, id: :review_product_id %>
-  </div> -->
+  </div>
   <% end %>
 
   <div class="actions">
