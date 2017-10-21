@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    @review = Review.new
   end
 
   # GET /products/new
@@ -21,9 +22,7 @@ class ProductsController < ApplicationController
   def edit
   end
 
-  def show
-    @review = Review.new
-  end
+
 
   # POST /products
   # POST /products.json
@@ -73,6 +72,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :description, :price_in_cents)
+      params.require(:product).permit(:name, :description, :price_in_cents, :image)
     end
 end
