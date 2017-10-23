@@ -1,4 +1,109 @@
+
+  <!-- THESE ARE MIKES ADDITIONS -->
+    <section class="banner full">
+      <article>
+        <img src="images/slide01.jpg" alt="" />
+        <div class="inner">
+          <header>
+            <p>Your products available via</p>
+            <h2>Rainforest</h2>
+          </header>
+        </div>
+      </article>
+      <article>
+        <img src="images/slide02.jpg" alt="" />
+        <div class="inner">
+          <header>
+            <p>Provide your products here</p>
+            <h2>To the World</h2>
+          </header>
+        </div>
+      </article>
+      <article>
+        <img src="images/slide03.jpg"  alt="" />
+        <div class="inner">
+          <header>
+            <p>Bringing people closer to the products they love</p>
+            <h2>Stellar Images</h2>
+          </header>
+        </div>
+      </article>
+      <article>
+        <img src="images/slide04.jpg"  alt="" />
+        <div class="inner">
+          <header>
+            <p>Provide crucial feedback via</p>
+            <h2>Reviews</h2>
+          </header>
+        </div>
+      </article>
+      <article>
+        <img src="images/slide05.jpg"  alt="" />
+        <div class="inner">
+          <header>
+            <p>Manage everything in your Rainforest</p>
+            <h2>Through Editing</h2>
+          </header>
+        </div>
+      </article>
+    </section>
+    <!-- One -->
+			<section id="one" class="wrapper style2">
+				<div class="inner">
+					<div class="grid-style">
+
+						<div>
+							<div class="box">
+								<div class="image fit">
+                  <tbody>
+                    <% @products.each do |product| %>
+                      <tr>
+                        <td><%= image_tag product.image %></td>
+                        <div class="content">
+        									<header class="align-center">
+                        <td><%= product.name %></td>
+                        <td><%= product.description %></td>
+                        </header>
+                        <td><%= product.formatted_price %></td>
+                        <td><%= link_to 'Edit', edit_product_path(product) %></td>
+                        <td><%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+								</div>
+							     <footer class="align-center">
+                   <td><%= link_to 'Show More', product, class: "button alt" %></td>
+									</footer>
+								</div>
+							</div>
+						</div>
+
+
+						<div>
+							<div class="box">
+								<div class="image fit">
+									<%= image_tag product.image.last %>
+								</div>
+								<div class="content">
+									<header class="align-center">
+										<%= product.name.last %>
+										<%= product.description.last %>
+									</header>
+                  <td><%= product.formatted_price.last %></td>
+                  <td><%= link_to 'Edit', edit_product_path(product) %></td>
+                  <td><%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+									<footer class="align-center">
+										<td><%= link_to 'Show More', product, class: "button alt" %></td>
+									</footer>
+								</div>
+							</div>
+						</div>
+          </tr>
+        <% end %>
+
+					</div>
+				</div>
+			</section>
+<!-- END OF MIKES ADDITIONS -->
 <h1>Listing Products</h1>
+
 
 <table>
   <thead>
@@ -20,13 +125,62 @@
         <td><%= product.formatted_price %></td>
         <td><%= link_to 'Show', product %></td>
         <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+
+<%= link_to 'New Product', new_product_path %>
+
+<!-- Two -->
+  <section id="two" class="wrapper style3">
+    <div class="inner">
+      <header class="align-center">
+        <p>Here are some more product that you might like</p>
+        <h2>See whats right for you</h2>
+      </header>
+    </div>
+  </section>
+
+  <!-- Three -->
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+    <section id="three" class="wrapper style2">
+      <div class="inner">
+        <header class="align-center">
+          <p class="special">Nam vel ante sit amet libero scelerisque facilisis eleifend vitae urna</p>
+          <h2>Morbi maximus justo</h2>
+        </header>
+        <div class="gallery">
+          <div>
+            <div class="image fit">
+              <td><%= image_tag product.image %></td>
+            </div>
+          </div>
+          <div>
+            <div class="image fit">
+              <td><%= image_tag product.image %></td>
+            </div>
+          </div>
+          <div>
+            <div class="image fit">
+              <td><%= image_tag product.image %></td>
+            </div>
+          </div>
+          <div>
+            <div class="image fit">
+              <td><%= image_tag product.image %></td>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </tr>
+<% end %>
 
 <%= link_to 'New Product', new_product_path %> |
 <%= link_to 'View All Reviews', reviews_path %> |
